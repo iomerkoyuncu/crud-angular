@@ -1,0 +1,73 @@
+<div
+  userForm="userForm"
+  filteredOptions="filteredOptions"
+  class="flex flex-col justify-center items-center p-3 m-3"
+>
+  <div class="form">
+    <h1 class="text-3xl font-bold">
+      Creating user: {{ userForm.firstName }} {{ userForm.lastName }}
+    </h1>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" [(ngModel)]="userForm.email" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="Title"
+        [(ngModel)]="userForm.title"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        placeholder="First Name"
+        [(ngModel)]="userForm.firstName"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last Name" [(ngModel)]="userForm.lastName" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Image</mat-label>
+      <input matInput placeholder="Image" [(ngModel)]="userForm.picture" />
+    </mat-form-field>
+  </div>
+
+  <div class="flex justify-center items-center">
+    <app-button
+      [bgColor]="'blue'"
+      [textColor]="'white'"
+      [text]="'Save Changes'"
+      icon="save"
+      (btnClick)="onSaveChanges()"
+    >
+    </app-button>
+
+    <app-button
+      [bgColor]="'red'"
+      [textColor]="'white'"
+      [text]="'Cancel'"
+      icon="cancel"
+      (btnClick)="onCancelClick()"
+    >
+    </app-button>
+  </div>
+</div>

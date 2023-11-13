@@ -6,6 +6,9 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/User';
 import { ToastrService } from 'ngx-toastr';
 
+import { MatDialog } from '@angular/material/dialog';
+import { CreateUserComponent } from '../create-user/create-user.component';
+
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
@@ -29,7 +32,8 @@ export class ListUsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +42,12 @@ export class ListUsersComponent implements OnInit {
       this.dataSource = new MatTableDataSource<User>(this.users);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+    });
+  }
+
+  openUserDialog(): void {
+    this.matDialog.open(CreateUserComponent, {
+      width: '600px',
     });
   }
 

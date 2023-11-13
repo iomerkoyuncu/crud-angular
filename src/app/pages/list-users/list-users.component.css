@@ -15,3 +15,7 @@ th.mat-header-cell {
 tr:nth-child(even) {
   background-color: #e4f8f1;
 }
+
+.dialog-custom {
+  border-radius: 10px; /* Adjust the value as needed */
+}
