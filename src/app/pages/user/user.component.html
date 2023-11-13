@@ -1,0 +1,75 @@
+<div
+  class="max-lg:max-w-md mx-auto bg-white border-2 border-black rounded-lg overflow-hidden shadow-lg p-6 mt-6"
+>
+  <div
+    class="flex max-lg:flex-col lg:flex-wrap lg:justify-evenly lg:items-center"
+  >
+    <div class="flex flex-col justify-center items-center m-3 w-52">
+      <img
+        src="{{ user.picture }}"
+        alt="User Picture"
+        class="w-16 h-16 rounded-full mr-4"
+      />
+      <div>
+        <h1 class="text-2xl font-bold">
+          {{ user.title }} {{ user.firstName }} {{ user.lastName }}
+        </h1>
+        <p class="text-gray-600">{{ user.email }}</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-start items-start text-left m-3 w-64">
+      <h2 class="text-lg font-semibold mb-2">Personal Information</h2>
+      <ul class="list-disc ml-6">
+        <li><strong>ID:</strong> {{ user.id }}</li>
+        <li><strong>Gender:</strong> {{ user.gender }}</li>
+        <li>
+          <strong>Date of Birth:</strong>
+          {{ user.dateOfBirth | date : "longDate" }}
+        </li>
+        <li><strong>Phone:</strong> {{ user.phone }}</li>
+      </ul>
+    </div>
+
+    <div class="flex flex-col justify-start items-start text-left m-3 w-48">
+      <h2 class="text-lg font-semibold mb-2">Address</h2>
+      <p>
+        {{ user.location.street }}, {{ user.location.city }},
+        {{ user.location.state }}, {{ user.location.country }}
+      </p>
+      <p><strong>Timezone:</strong> {{ user.location.timezone }}</p>
+    </div>
+
+    <div class="flex flex-col justify-center items-start text-left m-3 w-48">
+      <h2 class="text-lg font-semibold mb-2">Registration Information</h2>
+      <p>
+        <strong>Registered on:</strong>
+        {{ user.registerDate | date : "longDate" }}
+      </p>
+      <p>
+        <strong>Last Updated:</strong>
+        {{ user.updatedDate | date : "longDate" }}
+      </p>
+    </div>
+  </div>
+
+  <div class="flex justify-end items-center">
+    <app-button
+      [bgColor]="'blue'"
+      [textColor]="'white'"
+      [text]="'Edit User'"
+      icon="edit"
+      routerLink="/user-edit/{{ user.id }}"
+    >
+    </app-button>
+
+    <app-button
+      [bgColor]="'red'"
+      [textColor]="'white'"
+      [text]="'Delete User'"
+      icon="delete"
+      (btnClick)="onDeleteUser(user.id)"
+    >
+    </app-button>
+  </div>
+</div>

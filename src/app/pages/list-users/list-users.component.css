@@ -1,0 +1,17 @@
+table.mat-table {
+  width: 100%;
+}
+
+td.mat-cell {
+  text-align: left;
+}
+
+th.mat-header-cell {
+  text-align: left;
+  color: black;
+  font-size: 18px;
+}
+
+tr:nth-child(even) {
+  background-color: #e4f8f1;
+}

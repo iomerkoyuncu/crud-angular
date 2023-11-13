@@ -1,0 +1,12 @@
+<button
+  [ngStyle]="{ 'background-color': bgColor, color: textColor }"
+  class="flex justify-center items-center p-2 m-2 px-2 mx-2 rounded-lg transition ease-in-out delay-150 hover:scale-110 duration-300 cursor-pointer"
+  (click)="onClick()"
+>
+  <div [ngClass]="text ? 'pr-2' : ''">
+    <mat-icon class="icon">{{ icon }}</mat-icon>
+  </div>
+  <span>
+    {{ text }}
+  </span>
+</button>
