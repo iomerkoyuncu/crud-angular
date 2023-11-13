@@ -10,12 +10,19 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Email" [(ngModel)]="userForm.email" />
+      <input
+        matInput
+        placeholder="Email must be valid (ex: abc@test.com)"
+        type="email"
+        required="true"
+        [(ngModel)]="userForm.email"
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Title</mat-label>
       <input
+        required="true"
         matInput
         placeholder="Title"
         [(ngModel)]="userForm.title"
@@ -34,6 +41,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>First Name</mat-label>
       <input
+        required="true"
         matInput
         placeholder="First Name"
         [(ngModel)]="userForm.firstName"
@@ -42,12 +50,22 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Last Name</mat-label>
-      <input matInput placeholder="Last Name" [(ngModel)]="userForm.lastName" />
+      <input
+        required="true"
+        matInput
+        placeholder="Last Name"
+        [(ngModel)]="userForm.lastName"
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Image</mat-label>
-      <input matInput placeholder="Image" [(ngModel)]="userForm.picture" />
+      <input
+        required="true"
+        matInput
+        placeholder="Image"
+        [(ngModel)]="userForm.picture"
+      />
     </mat-form-field>
   </div>
 

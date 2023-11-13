@@ -46,11 +46,24 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSaveChanges(): void {
-    // Implement your save logic here
-    this.userService.createUser(this.userForm).subscribe(() => {
-      this.dialogRef.close();
-      this.toastr.success('User created successfully.', 'User Created');
-    });
+    this.userService.createUser(this.userForm).subscribe(
+      () => {
+        // Success
+        this.dialogRef.close();
+        this.toastr.success('User created successfully.', 'User Created');
+      },
+      (error) => {
+        // Error
+        if (error.status === 400) {
+          this.toastr.error('Bad request. Please check your input.', 'Error');
+        } else {
+          this.toastr.error(
+            'An error occurred. Please try again later.',
+            'Error'
+          );
+        }
+      }
+    );
   }
 
   onCancelClick(): void {
